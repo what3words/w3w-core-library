@@ -14,6 +14,6 @@ data class W3WCountry(
      * @return true if the country is a land area, false otherwise.
      */
     fun isLand(): Boolean {
-        return twoLetterCode != "ZZ"
+        return !twoLetterCode.equals("ZZ", ignoreCase = true)
     }
 }
