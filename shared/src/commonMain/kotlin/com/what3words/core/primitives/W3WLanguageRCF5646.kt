@@ -1,8 +1,7 @@
 package com.what3words.core.primitives
 
 /**
- * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages acrossWhat3Words Language Definitions.
- * This enum encapsulates all languages supported by what3words across various domains, from lat/lng conversion to text, voice, image search.
+ * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages
  */
 enum class W3WLanguageRCF5646(val code: String) {
     AF(code = "af"),
