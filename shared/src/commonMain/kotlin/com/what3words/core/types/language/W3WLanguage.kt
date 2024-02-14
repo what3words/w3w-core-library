@@ -1,5 +1,4 @@
-package com.what3words.core.primitives
-
+package com.what3words.core.types.language
 
 /**
  * Represents a language supported by what3words.

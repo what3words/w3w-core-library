@@ -1,5 +1,4 @@
-package com.what3words.core.primitives
-
+package com.what3words.core.types.geometry
 
 /**
  * Represents coordinates in the what3words system.

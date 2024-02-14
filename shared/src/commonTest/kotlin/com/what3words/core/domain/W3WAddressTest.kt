@@ -1,5 +1,10 @@
-package com.what3words.core.primitives
+package com.what3words.core.domain
 
+import com.what3words.core.types.domain.W3WAddress
+import com.what3words.core.types.domain.W3WCountry
+import com.what3words.core.types.geometry.W3WCoordinates
+import com.what3words.core.types.geometry.W3WRectangle
+import com.what3words.core.types.language.W3WLanguage
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull

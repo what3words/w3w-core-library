@@ -1,4 +1,4 @@
-package com.what3words.core.primitives
+package com.what3words.core.types.geometry
 
 /**
  * Represents a distance in kilometers in the what3words system.
