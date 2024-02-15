@@ -1,4 +1,4 @@
-package com.what3words.core.primitives
+package com.what3words.core.types.language
 
 /**
  * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages

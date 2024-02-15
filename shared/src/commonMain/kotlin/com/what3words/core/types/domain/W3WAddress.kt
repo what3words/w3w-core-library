@@ -1,4 +1,8 @@
-package com.what3words.core.primitives
+package com.what3words.core.types.domain
+
+import com.what3words.core.types.geometry.W3WCoordinates
+import com.what3words.core.types.geometry.W3WRectangle
+import com.what3words.core.types.language.W3WLanguage
 
 
 /**

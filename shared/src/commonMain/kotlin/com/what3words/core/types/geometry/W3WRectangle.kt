@@ -1,5 +1,4 @@
-package com.what3words.core.primitives
-
+package com.what3words.core.types.geometry
 
 /**
  * Defines a rectangle using two sets of coordinates in the what3words system.

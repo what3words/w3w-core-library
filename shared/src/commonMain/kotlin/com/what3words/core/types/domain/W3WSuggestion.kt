@@ -1,4 +1,6 @@
-package com.what3words.core.primitives
+package com.what3words.core.types.domain
+
+import com.what3words.core.types.geometry.W3WDistance
 
 
 /**

@@ -1,5 +1,6 @@
-package com.what3words.core.primitives
+package com.what3words.core.domain
 
+import com.what3words.core.types.domain.W3WCountry
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

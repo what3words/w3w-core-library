@@ -1,5 +1,6 @@
-package com.what3words.core.primitives
+package com.what3words.core.language
 
+import com.what3words.core.types.language.W3WLanguageRCF5646
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
