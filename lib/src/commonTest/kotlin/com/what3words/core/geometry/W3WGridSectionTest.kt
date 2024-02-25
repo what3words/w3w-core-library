@@ -90,12 +90,12 @@ class W3WGridSectionTest {
     fun `test toGeoJSON with valid lines two`() {
         val lines = listOf(
             W3WLine(
-                W3WCoordinates(latitude = 52.208009918068136, longitude = 0.116126),
-                W3WCoordinates(latitude = 52.208009918068136, longitude = 0.11754)
+                W3WCoordinates(lat = 52.208009918068136, lng = 0.116126),
+                W3WCoordinates(lat = 52.208009918068136, lng = 0.11754)
             ),
             W3WLine(
-                W3WCoordinates(latitude = 52.20803686934023, longitude = 0.116126),
-                W3WCoordinates(latitude = 52.20803686934023, longitude = 0.11754)
+                W3WCoordinates(lat = 52.20803686934023, lng = 0.116126),
+                W3WCoordinates(lat = 52.20803686934023, lng = 0.11754)
             )
         )
         val gridSection = W3WGridSection(lines = lines)

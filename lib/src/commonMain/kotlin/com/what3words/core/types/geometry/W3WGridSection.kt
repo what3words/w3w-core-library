@@ -32,14 +32,14 @@ data class W3WGridSection(
                             add(buildJsonArray {
                                 add(
                                     buildJsonArray {
-                                        add(JsonPrimitive(it.start.longitude))
-                                        add(JsonPrimitive(it.start.latitude))
+                                        add(JsonPrimitive(it.start.lng))
+                                        add(JsonPrimitive(it.start.lat))
                                     }
                                 )
                                 add(
                                     buildJsonArray {
-                                        add(JsonPrimitive(it.end.longitude))
-                                        add(JsonPrimitive(it.end.latitude))
+                                        add(JsonPrimitive(it.end.lng))
+                                        add(JsonPrimitive(it.end.lat))
                                     }
                                 )
                             })

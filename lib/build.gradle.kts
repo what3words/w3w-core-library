@@ -62,7 +62,7 @@ android {
     namespace = "com.what3words.core"
     compileSdk = 33
     defaultConfig {
-        minSdk = 21
+        minSdk = 19
     }
 }
 

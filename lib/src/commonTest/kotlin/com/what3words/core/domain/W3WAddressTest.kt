@@ -13,12 +13,12 @@ import kotlin.test.assertNull
 class W3WAddressTest {
     // Test data
     private val words = "filled.count.soap"
-    private val center = W3WCoordinates(latitude = 51.520847, longitude = -0.195521)
+    private val center = W3WCoordinates(lat = 51.520847, lng = -0.195521)
     private val square = W3WRectangle(
-        southwest = W3WCoordinates(latitude = 51.520847, longitude = -0.195521),
-        northeast = W3WCoordinates(latitude = 51.520847, longitude = -0.195521)
+        southwest = W3WCoordinates(lat = 51.520847, lng = -0.195521),
+        northeast = W3WCoordinates(lat = 51.520847, lng = -0.195521)
     )
-    private val language = W3WLanguage(language = "en", locale = null)
+    private val language = W3WLanguage(code = "en", locale = null)
     private val country = W3WCountry(twoLetterCode = "GB")
     private val nearestPlace = "London"
 
