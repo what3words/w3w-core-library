@@ -1,0 +1,55 @@
+version: 2.1
+orbs:
+  gradle: circleci/gradle@2.2.0
+  android: circleci/android@2.3.0
+
+commands:
+  library-setup:
+    description: Restore cache, config gradlew, download dependencies and save cache
+    steps:
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "lib/build.gradle.kts" }}
+      - run:
+          name: Set up library dependencies
+          command: |
+            ./gradlew wrapper
+            ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "lib/build.gradle.kts" }}
+jobs:
+  build-publish-library:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2023.05.1
+    steps:
+      - checkout
+      - library-setup
+      - run:
+          name: Inject Maven signing key
+          command: |
+            echo $GPG_SIGNING_KEY \
+            | awk 'NR == 1 { print "SIGNING_KEY=" } 1' ORS='\\n' \
+            >> gradle.properties
+      - run:
+          name: Publish to Maven
+          command: ./gradlew assemble publish
+
+workflows:
+  build-deploy-artifacts:
+    jobs:
+      - build-publish-library:
+          context:
+            - org-global
+            - mobile
+            - maven-sign
+          filters:
+            branches:
+              only:
+                - dev
+                - main
+                - epic/MT-729-Core-Library
+            tags:
+              only: /^(v|d).*/
