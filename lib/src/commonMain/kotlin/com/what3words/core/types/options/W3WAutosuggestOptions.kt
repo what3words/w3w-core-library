@@ -6,14 +6,14 @@ import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WPolygon
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WLanguage
-import com.what3words.core.types.language.W3WLanguageRCF5646
+import com.what3words.core.types.language.W3WRCF5646Language
+import com.what3words.core.types.language.W3WProprietaryLanguage
 
 /**
  * Represents options for fine-tuning autosuggestions request in what3words.
  * This class provides a builder pattern to construct options for autosuggestions.
  * @property focus The focus point for the autosuggestion request.
  * @property language The preferred language for autosuggestions.
- * @property languageRCF5646 The preferred language for autosuggestions expressed in the RFC 5646 format.
  * @property nResults The number of results to return. Defaults to 3.
  * @property nFocusResults The number of results around the focus to return. Defaults to 0.
  * @property clipToCountry A list of [W3WCountry] to clip the autosuggestions to.
@@ -27,7 +27,6 @@ import com.what3words.core.types.language.W3WLanguageRCF5646
 class W3WAutosuggestOptions private constructor(
     val focus: W3WCoordinates?,
     val language: W3WLanguage?,
-    val languageRCF5646: W3WLanguageRCF5646?,
     val nResults: Int,
     val nFocusResults: Int?,
     val clipToCountry: List<W3WCountry>,
@@ -45,7 +44,6 @@ class W3WAutosuggestOptions private constructor(
     class Builder {
         private var focus: W3WCoordinates? = null
         private var language: W3WLanguage? = null
-        private var languageRCF5646: W3WLanguageRCF5646? = null
         private var nResults: Int = 3
         private var nFocusResults: Int? = null
         private var clipToCountry: MutableList<W3WCountry> = mutableListOf()
@@ -64,7 +62,6 @@ class W3WAutosuggestOptions private constructor(
         fun fromOptions(options: W3WAutosuggestOptions): Builder {
             focus = options.focus
             language = options.language
-            languageRCF5646 = options.languageRCF5646
             nResults = options.nResults
             nFocusResults = options.nFocusResults
             clipToCountry.addAll(options.clipToCountry)
@@ -95,27 +92,13 @@ class W3WAutosuggestOptions private constructor(
          *  Sets the fallback language for autosuggestions.
          *  For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy.
          *  For voice input (see voice section), language must always be specified.
-         *  Setting this value overrides the [languageRCF5646] value.
+         *  Accepts instances of [W3WRCF5646Language] or [W3WProprietaryLanguage].
          *
          * @param language The fallback language.
          * @return This builder instance.
          */
         fun language(language: W3WLanguage?): Builder {
             this.language = language
-            this.languageRCF5646 = null
-            return this
-        }
-
-        /**
-         * Sets the fallback language for autosuggestions in RFC 5646 format. See [language]
-         * Setting this value overrides the [language] value.
-         *
-         * @param languageRCF5646 The preferred language in RFC 5646 format.
-         * @return This builder instance.
-         */
-        fun language(languageRCF5646: W3WLanguageRCF5646?): Builder {
-            this.languageRCF5646 = languageRCF5646
-            this.language = null
             return this
         }
 
@@ -235,7 +218,6 @@ class W3WAutosuggestOptions private constructor(
             return W3WAutosuggestOptions(
                 focus = focus,
                 language = language,
-                languageRCF5646 = languageRCF5646,
                 nResults = nResults,
                 nFocusResults = nFocusResults,
                 clipToCountry = clipToCountry,
@@ -257,7 +239,6 @@ class W3WAutosuggestOptions private constructor(
 
         if (focus != other.focus) return false
         if (language != other.language) return false
-        if (languageRCF5646 != other.languageRCF5646) return false
         if (nResults != other.nResults) return false
         if (nFocusResults != other.nFocusResults) return false
         if (clipToCountry != other.clipToCountry) return false
@@ -274,7 +255,6 @@ class W3WAutosuggestOptions private constructor(
     override fun hashCode(): Int {
         var result = focus?.hashCode() ?: 0
         result = 31 * result + (language?.hashCode() ?: 0)
-        result = 31 * result + (languageRCF5646?.hashCode() ?: 0)
         result = 31 * result + nResults
         result = 31 * result + (nFocusResults ?: 0)
         result = 31 * result + clipToCountry.hashCode()
@@ -289,7 +269,7 @@ class W3WAutosuggestOptions private constructor(
     }
 
     override fun toString(): String {
-        return "W3WAutosuggestOptions(focus=$focus, language=$language, languageRCF5646=$languageRCF5646, nResults=$nResults, nFocusResults=$nFocusResults, clipToCountry=$clipToCountry, clipToCircle=$clipToCircle, clipToBoundingBox=$clipToBoundingBox, clipToPolygon=$clipToPolygon, inputType=$inputType, preferLand=$preferLand, includeCoordinates=$includeCoordinates)"
+        return "W3WAutosuggestOptions(focus=$focus, language=$language, nResults=$nResults, nFocusResults=$nFocusResults, clipToCountry=$clipToCountry, clipToCircle=$clipToCircle, clipToBoundingBox=$clipToBoundingBox, clipToPolygon=$clipToPolygon, inputType=$inputType, preferLand=$preferLand, includeCoordinates=$includeCoordinates)"
     }
 
 }

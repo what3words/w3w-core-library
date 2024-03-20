@@ -4,7 +4,7 @@ import com.what3words.core.types.domain.W3WAddress
 import com.what3words.core.types.domain.W3WCountry
 import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WRectangle
-import com.what3words.core.types.language.W3WLanguage
+import com.what3words.core.types.language.W3WProprietaryLanguage
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -18,7 +18,7 @@ class W3WAddressTest {
         southwest = W3WCoordinates(lat = 51.520847, lng = -0.195521),
         northeast = W3WCoordinates(lat = 51.520847, lng = -0.195521)
     )
-    private val language = W3WLanguage(code = "en", locale = null)
+    private val language = W3WProprietaryLanguage(code = "en", locale = null)
     private val country = W3WCountry(twoLetterCode = "GB")
     private val nearestPlace = "London"
 
