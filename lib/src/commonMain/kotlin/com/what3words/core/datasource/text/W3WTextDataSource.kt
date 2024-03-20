@@ -15,7 +15,7 @@ import com.what3words.core.types.options.W3WAutosuggestOptions
 /**
  * This interface provides an API for interacting with text-based data sources within what3words business domain
  */
-interface W3WTextDatasource {
+interface W3WTextDataSource {
     /**
      * Converts a latitude and longitude to a 3 word address.
      * Additionally provides country information, grid square bounds, nearest place, and a map link.
