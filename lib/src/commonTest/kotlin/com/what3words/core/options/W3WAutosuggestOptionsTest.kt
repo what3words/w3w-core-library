@@ -73,7 +73,7 @@ class W3WAutosuggestOptionsTest {
 
         assertNotNull(options)
         assertEquals(focus, options.focus)
-        assertNull(options.language)
+        assertEquals(W3WRCF5646Language.EN_GB, options.language)
         assertEquals(nResults, options.nResults)
         assertEquals(nFocusResults, options.nFocusResults)
         assertEquals(clipToCountry, options.clipToCountry)
