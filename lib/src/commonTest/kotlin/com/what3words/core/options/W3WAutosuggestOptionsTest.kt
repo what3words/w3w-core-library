@@ -7,13 +7,12 @@ import com.what3words.core.types.geometry.W3WDistance
 import com.what3words.core.types.geometry.W3WPolygon
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WProprietaryLanguage
-import com.what3words.core.types.language.W3WRCF5646Language
+import com.what3words.core.types.language.W3WRFC5646Language
 import com.what3words.core.types.options.W3WAutosuggestInputType
 import com.what3words.core.types.options.W3WAutosuggestOptions
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 
 class W3WAutosuggestOptionsTest {
 
@@ -39,7 +38,7 @@ class W3WAutosuggestOptionsTest {
     fun `builder creates instance with custom values`() {
         val focus = W3WCoordinates(1.0, 2.0)
         val language = W3WProprietaryLanguage(code = "en", locale = null)
-        val languageRCF5646 = W3WRCF5646Language.EN_GB
+        val languageRCF5646 = W3WRFC5646Language.EN_GB
         val nResults = 5
         val nFocusResults = 2
         val clipToCountry = listOf(W3WCountry("US"), W3WCountry("CA"))
@@ -73,7 +72,7 @@ class W3WAutosuggestOptionsTest {
 
         assertNotNull(options)
         assertEquals(focus, options.focus)
-        assertEquals(W3WRCF5646Language.EN_GB, options.language)
+        assertEquals(W3WRFC5646Language.EN_GB, options.language)
         assertEquals(nResults, options.nResults)
         assertEquals(nFocusResults, options.nFocusResults)
         assertEquals(clipToCountry, options.clipToCountry)

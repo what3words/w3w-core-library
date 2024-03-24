@@ -7,7 +7,7 @@ import com.what3words.core.types.language.W3WLanguage
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.domain.W3WSuggestion
 import com.what3words.core.types.geometry.W3WGridSection
-import com.what3words.core.types.language.W3WRCF5646Language
+import com.what3words.core.types.language.W3WRFC5646Language
 import com.what3words.core.types.language.W3WProprietaryLanguage
 import com.what3words.core.types.options.W3WAutosuggestOptions
 
@@ -21,7 +21,7 @@ interface W3WTextDataSource {
      * Additionally provides country information, grid square bounds, nearest place, and a map link.
      *
      * @param coordinates The latitude and longitude of the location to convert to a 3 word address.
-     * @param language The language in which the 3 word address should be provided. Accepts instances of [W3WRCF5646Language] or [W3WProprietaryLanguage].
+     * @param language The language in which the 3 word address should be provided. Accepts instances of [W3WRFC5646Language] or [W3WProprietaryLanguage].
      * @return A [W3WResult] instance containing the what3words address.
      */
     fun convertTo3wa(coordinates: W3WCoordinates, language: W3WLanguage): W3WResult<W3WAddress>

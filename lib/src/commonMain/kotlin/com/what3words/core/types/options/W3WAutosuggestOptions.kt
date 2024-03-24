@@ -6,7 +6,7 @@ import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WPolygon
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WLanguage
-import com.what3words.core.types.language.W3WRCF5646Language
+import com.what3words.core.types.language.W3WRFC5646Language
 import com.what3words.core.types.language.W3WProprietaryLanguage
 
 /**
@@ -92,7 +92,7 @@ class W3WAutosuggestOptions private constructor(
          *  Sets the fallback language for autosuggestions.
          *  For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy.
          *  For voice input (see voice section), language must always be specified.
-         *  Accepts instances of [W3WRCF5646Language] or [W3WProprietaryLanguage].
+         *  Accepts instances of [W3WRFC5646Language] or [W3WProprietaryLanguage].
          *
          * @param language The fallback language.
          * @return This builder instance.

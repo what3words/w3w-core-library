@@ -3,7 +3,7 @@ package com.what3words.core.types.language
 /**
  * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages
  */
-enum class W3WRCF5646Language(val code: String) : W3WLanguage {
+enum class W3WRFC5646Language(val code: String) : W3WLanguage {
     AF(code = "af") {
         override val w3wCode: String = code
         override val w3wLocale: String? = null
@@ -303,7 +303,7 @@ enum class W3WRCF5646Language(val code: String) : W3WLanguage {
 
     /**
      * Retrieves the RFC5646 language ISO 639-1 code.
-     * Example: [W3WRCF5646Language.ZH_HANT_TW.getLanguageCode] returns "zh".
+     * Example: [W3WRFC5646Language.ZH_HANT_TW.getLanguageCode] returns "zh".
      *
      * @return Language ISO 639-1 two-letter code.
      */
@@ -314,7 +314,7 @@ enum class W3WRCF5646Language(val code: String) : W3WLanguage {
 
     /**
      * Retrieves the RFC5646 script ISO 15924 code.
-     * Example: [W3WRCF5646Language.ZH_HANT_TW.getScriptCode] returns "Hant".
+     * Example: [W3WRFC5646Language.ZH_HANT_TW.getScriptCode] returns "Hant".
      *
      * @return Script ISO 15924 four-letter code, or null if not applicable.
      */
@@ -329,7 +329,7 @@ enum class W3WRCF5646Language(val code: String) : W3WLanguage {
 
     /**
      * Retrieves the RFC5646 region ISO 3166-1 alpha-2 code.
-     * Example: [W3WRCF5646Language.ZH_HANT_TW.getRegionCode] returns "TW".
+     * Example: [W3WRFC5646Language.ZH_HANT_TW.getRegionCode] returns "TW".
      *
      * @return Region ISO 3166-1 alpha-2 two-letter code, or null if not applicable.
      */
