@@ -1,11 +1,11 @@
 package com.what3words.core.datasource.voice.audiostream
 
 import kotlinx.coroutines.sync.Semaphore
-import com.what3words.core.datasource.voice.W3WVoiceDatasource
+import com.what3words.core.datasource.voice.W3WVoiceDataSource
 
 /**
  * Proxy class for the [W3WAudioStream], providing controlled access to its internal methods and attributes, which are intended
- * to be accessed only by implementations of [W3WVoiceDatasource].
+ * to be accessed only by implementations of [W3WVoiceDataSource].
  */
 class W3WAudioStreamProxy(private val stream: W3WAudioStream) {
     // Semaphore to control access to the audio stream session

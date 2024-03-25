@@ -11,7 +11,7 @@ import com.what3words.core.types.options.W3WAutosuggestOptions
 /**
  * Provides an interface for interacting with voice-based data sources within the what3words business domain.
  */
-interface W3WVoiceDatasource {
+interface W3WVoiceDataSource {
     /**
      * Performs automatic speech recognition (ASR) on a provided audio stream to return a list of what3words address suggestions.
      *

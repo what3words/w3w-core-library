@@ -1,10 +1,10 @@
 package com.what3words.core.datasource.voice.audiostream
 
 import com.what3words.core.types.common.W3WError
-import com.what3words.core.datasource.voice.W3WVoiceDatasource
+import com.what3words.core.datasource.voice.W3WVoiceDataSource
 
 /**
- * Abstract class defining the contract for all audio streams that can be utilized by [W3WVoiceDatasource]
+ * Abstract class defining the contract for all audio streams that can be utilized by [W3WVoiceDataSource]
  * to facilitate an autosuggest request.
  */
 abstract class W3WAudioStream {
