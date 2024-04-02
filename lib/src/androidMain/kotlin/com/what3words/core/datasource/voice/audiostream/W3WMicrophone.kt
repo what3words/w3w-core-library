@@ -54,7 +54,7 @@ actual class W3WMicrophone(
         recorder = AudioRecord(
             audioSource,
             config.sampleRateInHz,
-            AudioFormat.CHANNEL_IN_DEFAULT,
+            AudioFormat.CHANNEL_IN_MONO,
             config.encoding.value as Int,
             config.samplesPerChannel
         ).also { audioRecord ->
