@@ -1,5 +1,6 @@
 package com.what3words.core.datasource.voice
 
+import com.what3words.core.datasource.text.W3WTextDataSource
 import com.what3words.core.datasource.voice.audiostream.W3WAudioStream
 import com.what3words.core.types.common.W3WResult
 import com.what3words.core.types.domain.W3WSuggestion
@@ -13,11 +14,33 @@ import com.what3words.core.types.options.W3WAutosuggestOptions
  */
 interface W3WVoiceDataSource {
     /**
+     * Enum class for specifying the version type of the components used in [W3WVoiceDataSource].
+     */
+    enum class Version {
+        /**
+         * Represents the version of the library that implemented [W3WVoiceDataSource].
+         */
+        Library,
+        /**
+         * Represents the version of the data source where the implementation gets the data from.
+         */
+        DataSource
+    }
+
+    /**
+     * Retrieves the version string for a specified component from [W3WVoiceDataSource].
+     *
+     * @param version The type of version information required. Can be one of [Version.Library] or [Version.DataSource].
+     * @return The version string for the requested component, or `null` if the version is not available.
+     */
+    fun version(version: Version): String?
+
+    /**
      * Performs automatic speech recognition (ASR) on a provided audio stream to return a list of what3words address suggestions.
      *
      * @param input The audio stream (instance of [W3WAudioStream]) providing audio signals for ASR.
      * @param voiceLanguage The language used to initialize the ASR engine.
-     *                      Accepts instances of [W3WRFC5646Language] or [W3WProprietaryLanguage].
+     * Accepts instances of [W3WRFC5646Language] or [W3WProprietaryLanguage].
      * @param options Additional options for tuning the address suggestions.
      * @param onSpeechDetected Callback invoked when a voice data source detects and synthesizes user speech,
      *                         providing immediate ASR results. This callback is triggered before initiating

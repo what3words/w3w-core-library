@@ -16,6 +16,33 @@ import com.what3words.core.types.options.W3WAutosuggestOptions
  * This interface provides an API for interacting with text-based data sources within what3words business domain
  */
 interface W3WTextDataSource {
+
+    /**
+     * Enum class for specifying the version type of the components used in [W3WTextDataSource].
+     */
+    enum class Version {
+        /**
+         * Represents the version of the library that implemented [W3WTextDataSource].
+         */
+        Library,
+        /**
+         * Represents the version of the data source where the implementation gets the data from.
+         */
+        DataSource,
+        /**
+         * Represents the version of the raw data files that the data source implementation is using.
+         */
+        Data
+    }
+
+    /**
+     * Retrieves the version string for a specified component from [W3WTextDataSource].
+     *
+     * @param version The type of version information required. Can be one of [Version.Library], [Version.DataSource], or [Version.Data].
+     * @return The version string for the requested component, or `null` if the version is not available.
+     */
+    fun version(version: Version): String?
+
     /**
      * Converts a latitude and longitude to a 3 word address.
      * Additionally provides country information, grid square bounds, nearest place, and a map link.
