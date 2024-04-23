@@ -11,7 +11,15 @@ plugins {
 }
 
 group = "com.what3words"
-version = "0.1.0"
+
+/**
+ * IS_SNAPSHOT_RELEASE property will be automatically added to the root gradle.properties file by the CI pipeline, depending on the GitHub branch.
+ * A snapshot release is generated for every pull request merged or commit made into an epic branch.
+ */
+val isSnapshotRelease = findProperty("IS_SNAPSHOT_RELEASE") == "true"
+
+version =
+    if (isSnapshotRelease) "${findProperty("VERSION_NAME")}-SNAPSHOT" else "${findProperty("VERSION_NAME")}"
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
