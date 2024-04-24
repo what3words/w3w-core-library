@@ -37,7 +37,12 @@ class W3WAutosuggestOptionsTest {
     @Test
     fun `builder creates instance with custom values`() {
         val focus = W3WCoordinates(1.0, 2.0)
-        val language = W3WProprietaryLanguage(code = "en", locale = null)
+        val language = W3WProprietaryLanguage(
+            code = "en",
+            locale = null,
+            name = "English",
+            nativeName = "English"
+        )
         val languageRCF5646 = W3WRFC5646Language.EN_GB
         val nResults = 5
         val nFocusResults = 2

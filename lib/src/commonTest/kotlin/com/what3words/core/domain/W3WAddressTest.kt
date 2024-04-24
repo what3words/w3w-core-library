@@ -18,7 +18,10 @@ class W3WAddressTest {
         southwest = W3WCoordinates(lat = 51.520847, lng = -0.195521),
         northeast = W3WCoordinates(lat = 51.520847, lng = -0.195521)
     )
-    private val language = W3WProprietaryLanguage(code = "en", locale = null)
+    private val language = W3WProprietaryLanguage(
+        code = "en", locale = null,
+        name = "English", nativeName = "English"
+    )
     private val country = W3WCountry(twoLetterCode = "GB")
     private val nearestPlace = "London"
 
