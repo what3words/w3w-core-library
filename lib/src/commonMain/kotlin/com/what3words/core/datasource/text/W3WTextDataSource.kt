@@ -57,9 +57,9 @@ interface W3WTextDataSource {
      * Converts a 3 word address to coordinates.
      *
      * @param words A 3 word address as a string.
-     * @return A [W3WResult] instance containing the what3words coordinates
+     * @return A [W3WResult] instance containing the what3words address.
      */
-    fun convertToCoordinates(words: String): W3WResult<W3WCoordinates>
+    fun convertToCoordinates(words: String): W3WResult<W3WAddress>
 
     /**
      * [autosuggest] can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.
