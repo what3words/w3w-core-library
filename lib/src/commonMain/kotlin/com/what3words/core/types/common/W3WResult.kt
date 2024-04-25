@@ -18,10 +18,10 @@ sealed class W3WResult<out T> {
     /**
      * Data class representing a failed result containing an optional error message and error object of type [W3WError].
      *
-     * @param message An optional error message providing additional context.
      * @param error An optional error object of type [W3WError] representing the cause of the failure.
+     * @param message An optional failure message providing additional context. Defaults to the [error] message.
      */
-    data class Failure<out T>(val message: String?, val error: W3WError?) : W3WResult<T>()
+    data class Failure<out T>(val error: W3WError, val message: String? = error.message) : W3WResult<T>()
 }
 
 /**
