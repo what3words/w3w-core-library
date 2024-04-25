@@ -55,5 +55,6 @@ workflows:
                 - main
                 - staging
                 - /^epic.*/
+                - test-shot
             tags:
               only: /^(v|d).*/
