@@ -59,6 +59,13 @@ interface W3WVoiceDataSource {
     )
 
     /**
+     * Retrieves a set of all available/supported languages for the current instance of the [W3WVoiceDataSource].
+     *
+     * @return A set of [W3WRFC5646Language] containing the supported languages.
+     */
+    fun availableLanguages(): Set<W3WRFC5646Language>
+
+    /**
      * Terminates any ongoing autosuggest or speech recognition process within the voice datasource
      * and releases associated resources.
      */
