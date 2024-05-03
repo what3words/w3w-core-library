@@ -44,9 +44,11 @@ actual class W3WMicrophone(
     @SuppressLint("MissingPermission")
     override fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit) {
         if (!isSampleRateValid(config.sampleRateInHz)) {
-            eventsListener?.onError(
-                W3WError("Invalid sample rate, please use one of the following: ${getSupportedSampleRates().joinToString { it.toString() }}")
-            )
+            CoroutineScope(Dispatchers.Main).launch {
+                eventsListener?.onError(
+                    W3WError("Invalid sample rate, please use one of the following: ${getSupportedSampleRates().joinToString { it.toString() }}")
+                )
+            }
             return
         }
 
@@ -60,8 +62,12 @@ actual class W3WMicrophone(
         ).also { audioRecord ->
             if (audioRecord.state == AudioRecord.STATE_INITIALIZED) {
                 isListening = true
-                eventsListener?.onAudioStreamStateChange(W3WAudioStreamState.LISTENING)
                 CoroutineScope(Dispatchers.IO).launch {
+                    withContext(Dispatchers.Main) {
+                        eventsListener?.onAudioStreamStateChange(
+                            W3WAudioStreamState.LISTENING
+                        )
+                    }
                     val buffer = ShortArray(config.samplesPerChannel)
                     var oldTimestamp = System.currentTimeMillis()
                     audioRecord.startRecording()
@@ -103,7 +109,11 @@ actual class W3WMicrophone(
      */
     override fun closeAudioInputStream() {
         isListening = false
-        eventsListener?.onAudioStreamStateChange(W3WAudioStreamState.STOPPED)
+        CoroutineScope(Dispatchers.Main).launch {
+            eventsListener?.onAudioStreamStateChange(
+                W3WAudioStreamState.STOPPED
+            )
+        }
         recorder?.release()
     }
 
