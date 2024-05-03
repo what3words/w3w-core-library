@@ -70,7 +70,7 @@ kotlin {
 
 android {
     namespace = "com.what3words.core"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 19
     }

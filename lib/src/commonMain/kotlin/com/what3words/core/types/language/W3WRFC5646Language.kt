@@ -1,8 +1,11 @@
 package com.what3words.core.types.language
 
+import kotlinx.serialization.Serializable
+
 /**
  * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages
  */
+@Serializable
 enum class W3WRFC5646Language(val code: String) : W3WLanguage {
     AF(code = "af") {
         override val w3wCode: String = code
@@ -304,45 +307,45 @@ enum class W3WRFC5646Language(val code: String) : W3WLanguage {
         override val w3wCode: String = code
         override val w3wLocale: String? = null
     };
+}
 
-    /**
-     * Retrieves the RFC5646 language ISO 639-1 code.
-     * Example: [W3WRFC5646Language.ZH_HANT_TW.getLanguageCode] returns "zh".
-     *
-     * @return Language ISO 639-1 two-letter code.
-     */
-    fun getLanguageCode(): String {
-        return code.split("-")[0]
+/**
+ * Retrieves the RFC5646 language ISO 639-1 code.
+ * Example: [W3WRFC5646Language.ZH_HANT_TW.getLanguageCode] returns "zh".
+ *
+ * @return Language ISO 639-1 two-letter code.
+ */
+fun W3WRFC5646Language.getLanguageCode(): String {
+    return code.split("-")[0]
+}
+
+
+/**
+ * Retrieves the RFC5646 script ISO 15924 code.
+ * Example: [W3WRFC5646Language.ZH_HANT_TW.getScriptCode] returns "Hant".
+ *
+ * @return Script ISO 15924 four-letter code, or null if not applicable.
+ */
+fun W3WRFC5646Language.getScriptCode(): String? {
+    val split = code.split("-")
+    return when {
+        split.size == 2 && split[1].count() == 4 -> split[1]
+        split.size == 3 && split[1].count() == 4 -> split[1]
+        else -> null
     }
+}
 
-
-    /**
-     * Retrieves the RFC5646 script ISO 15924 code.
-     * Example: [W3WRFC5646Language.ZH_HANT_TW.getScriptCode] returns "Hant".
-     *
-     * @return Script ISO 15924 four-letter code, or null if not applicable.
-     */
-    fun getScriptCode(): String? {
-        val split = code.split("-")
-        return when {
-            split.size == 2 && split[1].count() == 4 -> split[1]
-            split.size == 3 && split[1].count() == 4 -> split[1]
-            else -> null
-        }
-    }
-
-    /**
-     * Retrieves the RFC5646 region ISO 3166-1 alpha-2 code.
-     * Example: [W3WRFC5646Language.ZH_HANT_TW.getRegionCode] returns "TW".
-     *
-     * @return Region ISO 3166-1 alpha-2 two-letter code, or null if not applicable.
-     */
-    fun getRegionCode(): String? {
-        val split = code.split("-")
-        return when {
-            split.size == 2 && split[1].count() == 2 -> split[1]
-            split.size == 3 && split[2].count() == 2 -> split[2]
-            else -> null
-        }
+/**
+ * Retrieves the RFC5646 region ISO 3166-1 alpha-2 code.
+ * Example: [W3WRFC5646Language.ZH_HANT_TW.getRegionCode] returns "TW".
+ *
+ * @return Region ISO 3166-1 alpha-2 two-letter code, or null if not applicable.
+ */
+fun W3WRFC5646Language.getRegionCode(): String? {
+    val split = code.split("-")
+    return when {
+        split.size == 2 && split[1].count() == 2 -> split[1]
+        split.size == 3 && split[2].count() == 2 -> split[2]
+        else -> null
     }
 }

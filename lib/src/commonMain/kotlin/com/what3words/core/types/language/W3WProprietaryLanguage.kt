@@ -1,5 +1,7 @@
 package com.what3words.core.types.language
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents a language used in the what3words system, identified by proprietary language codes controlled by what3words. See [available-languages](https://developer.what3words.com/public-api/docs#available-languages) for more information.
  *
@@ -11,14 +13,53 @@ package com.what3words.core.types.language
  * @property name the English name of the language, for example, Vietnamese.
  * @property nativeName the name of the language in its native form, for example, the native name for Vietnamese is Tiếng Việt.
  */
-data class W3WProprietaryLanguage(
+@Serializable
+class W3WProprietaryLanguage(
     val code: String,
     val locale: String?,
     val name: String?,
     val nativeName: String?
-): W3WLanguage {
+) : W3WLanguage {
     override val w3wCode: String
         get() = code
     override val w3wLocale: String?
         get() = locale
+
+    fun copy(
+        code: String = this.code,
+        locale: String? = this.locale,
+        name: String? = this.name,
+        nativeName: String? = this.nativeName
+    ): W3WProprietaryLanguage = W3WProprietaryLanguage(
+        code = code,
+        locale = locale,
+        name = name,
+        nativeName = nativeName
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as W3WProprietaryLanguage
+
+        if (code != other.code) return false
+        if (locale != other.locale) return false
+        if (name != other.name) return false
+        if (nativeName != other.nativeName) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = code.hashCode()
+        result = 31 * result + (locale?.hashCode() ?: 0)
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + (nativeName?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String {
+        return "W3WProprietaryLanguage(code='$code', locale=$locale, name=$name, nativeName=$nativeName, w3wCode='$w3wCode', w3wLocale=$w3wLocale)"
+    }
 }
