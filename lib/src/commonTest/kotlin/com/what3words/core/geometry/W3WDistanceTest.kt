@@ -1,6 +1,8 @@
 package com.what3words.core.geometry
 
 import com.what3words.core.types.geometry.W3WDistance
+import com.what3words.core.types.geometry.km
+import com.what3words.core.types.geometry.m
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

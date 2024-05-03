@@ -2,6 +2,7 @@ package com.what3words.core.domain
 
 import com.what3words.core.types.domain.W3WAddress
 import com.what3words.core.types.domain.W3WCountry
+import com.what3words.core.types.domain.formattedWords
 import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WProprietaryLanguage
@@ -26,9 +27,9 @@ class W3WAddressTest {
     private val nearestPlace = "London"
 
     @Test
-    fun `test address property`() {
+    fun `test formattedWords returns words formatted with three slashes in front`() {
         val address = W3WAddress(words, center, square, language, country, nearestPlace)
-        assertEquals("///filled.count.soap", address.address)
+        assertEquals("///filled.count.soap", address.formattedWords())
     }
 
     @Test

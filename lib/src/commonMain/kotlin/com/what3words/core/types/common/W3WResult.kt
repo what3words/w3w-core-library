@@ -13,7 +13,24 @@ sealed class W3WResult<out T> {
      *
      * @param value The value returned upon success.
      */
-    data class Success<out T>(val value: T) : W3WResult<T>()
+    class Success<out T>(val value: T) : W3WResult<T>() {
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (other == null || this::class != other::class) return false
+
+            other as Success<*>
+
+            return value == other.value
+        }
+
+        override fun hashCode(): Int {
+            return value?.hashCode() ?: 0
+        }
+
+        override fun toString(): String {
+            return "Success(value=$value)"
+        }
+    }
 
     /**
      * Data class representing a failed result containing an optional error message and error object of type [W3WError].
@@ -21,7 +38,29 @@ sealed class W3WResult<out T> {
      * @param error An optional error object of type [W3WError] representing the cause of the failure.
      * @param message An optional failure message providing additional context. Defaults to the [error] message.
      */
-    data class Failure<out T>(val error: W3WError, val message: String? = error.message) : W3WResult<T>()
+    class Failure<out T>(val error: W3WError, val message: String? = error.message) : W3WResult<T>(){
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (other == null || this::class != other::class) return false
+
+            other as Failure<*>
+
+            if (error != other.error) return false
+            if (message != other.message) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = error.hashCode()
+            result = 31 * result + (message?.hashCode() ?: 0)
+            return result
+        }
+
+        override fun toString(): String {
+            return "Failure(error=$error, message=$message)"
+        }
+    }
 }
 
 /**

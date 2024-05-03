@@ -3,6 +3,7 @@ package com.what3words.core.geometry
 import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WGridSection
 import com.what3words.core.types.geometry.W3WLine
+import com.what3words.core.types.geometry.toGeoJSON
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

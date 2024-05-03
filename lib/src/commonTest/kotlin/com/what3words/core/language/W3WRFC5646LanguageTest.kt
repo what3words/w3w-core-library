@@ -1,6 +1,9 @@
 package com.what3words.core.language
 
 import com.what3words.core.types.language.W3WRFC5646Language
+import com.what3words.core.types.language.getLanguageCode
+import com.what3words.core.types.language.getRegionCode
+import com.what3words.core.types.language.getScriptCode
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -319,6 +322,7 @@ class W3WRFC5646LanguageTest {
             W3WRFC5646Language.ZH_HANT_HK -> "zh-Hant-HK"
             W3WRFC5646Language.ZH_HANT_TW -> "zh-Hant-TW"
             W3WRFC5646Language.ZU -> "zu"
+            W3WRFC5646Language.SL -> "sl"
         }
     }
 }
