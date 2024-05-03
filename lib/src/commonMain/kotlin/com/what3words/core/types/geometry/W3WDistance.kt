@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 class W3WDistance(
-    internal val distance: Double
+    val distance: Double
 ) {
     fun copy(distance: Double = this.distance): W3WDistance = W3WDistance(distance = distance)
     override fun equals(other: Any?): Boolean {
