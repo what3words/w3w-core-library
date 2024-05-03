@@ -80,12 +80,14 @@ actual class W3WMicrophone(
             AVAudioSession.sharedInstance()
                 .setPreferredSampleRate(sampleRate = config.sampleRateInHz.toDouble(), null)
         } catch (e: Exception) {
-            eventsListener?.onError(
-                W3WError(
-                    message = "Microphone initialization error. Cause:$e",
-                    cause = e
+            CoroutineScope(Dispatchers.Main).launch {
+                eventsListener?.onError(
+                    W3WError(
+                        message = "Microphone initialization error. Cause:$e",
+                        cause = e
+                    )
                 )
-            )
+            }
             closeAudioInputStream()
         }
     }
@@ -117,7 +119,9 @@ actual class W3WMicrophone(
         // Start listening only if not already listening
         if (!listening) {
             listening = true
-            eventsListener?.onAudioStreamStateChange(state = W3WAudioStreamState.LISTENING)
+            CoroutineScope(Dispatchers.Main).launch {
+                eventsListener?.onAudioStreamStateChange(state = W3WAudioStreamState.LISTENING)
+            }
 
             // Install a tap on the microphone input to receive audio signals
             mic.installTapOnBus(
@@ -274,13 +278,20 @@ actual class W3WMicrophone(
             if (listening) {
                 listening = false
                 mic.removeTapOnBus(bus = 0u)
-                eventsListener?.onAudioStreamStateChange(state = W3WAudioStreamState.STOPPED)
+                CoroutineScope(Dispatchers.Main).launch {
+                    eventsListener?.onAudioStreamStateChange(state = W3WAudioStreamState.STOPPED)
+                }
                 if (audioBufferControlSemaphore.availablePermits > 0) audioBufferControlSemaphore.release()
             }
         } catch (e: Throwable) {
-            eventsListener?.onError(
-                error = W3WError(message = "Error deactivating audio session. Cause:$e", cause = e)
-            )
+            CoroutineScope(Dispatchers.Main).launch {
+                eventsListener?.onError(
+                    error = W3WError(
+                        message = "Error deactivating audio session. Cause:$e",
+                        cause = e
+                    )
+                )
+            }
         }
     }
 
