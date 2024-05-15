@@ -39,8 +39,7 @@ interface W3WVoiceDataSource {
      * Performs automatic speech recognition (ASR) on a provided audio stream to return a list of what3words address suggestions.
      *
      * @param input The audio stream (instance of [W3WAudioStream]) providing audio signals for ASR.
-     * @param voiceLanguage The language used to initialize the ASR engine.
-     * Accepts instances of [W3WRFC5646Language] or [W3WProprietaryLanguage].
+     * @param voiceLanguage The [W3WRFC5646Language] used to initialize the ASR engine.
      * @param options Additional options for tuning the address suggestions.
      * @param onRawResult callback invoked when the ASR returns a raw unprocessed JSON result (if supported),
      * this will be the JSON used internally by our [W3WTextDataSource] to get processed by autosuggest and return a list of [W3WSuggestion].
@@ -51,7 +50,7 @@ interface W3WVoiceDataSource {
      */
     fun autosuggest(
         input: W3WAudioStream,
-        voiceLanguage: W3WLanguage,
+        voiceLanguage: W3WRFC5646Language,
         options: W3WAutosuggestOptions?,
         onRawResult: ((String) -> Unit)?,
         onResult: (result: W3WResult<List<W3WSuggestion>>) -> Unit,
