@@ -14,14 +14,14 @@ abstract class W3WAudioStream {
     internal abstract var config: W3WAudioStreamConfig
 
     /**
-     * Opens the audio stream and begins listening for audio signals to process.
+     * Opens the audio stream.
      *
-     * @param onAudioSignal Callback invoked when the [W3WAudioStream] receives new audio data.
+     * @param onAudioSignal Callback invoked when the [W3WAudioStream] has new audio data.
      */
     internal abstract fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit)
 
     /**
-     * Instructs the audio stream to cease listening for new audio signals and release system resources.
+     * Closes the audio stream and release system resources.
      */
     internal abstract fun closeAudioInputStream()
 
