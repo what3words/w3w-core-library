@@ -1,11 +1,13 @@
 package com.what3words.core.types.language
 
+import com.what3words.core.types.language.internal.W3WLanguageSerializer
 import kotlinx.serialization.Serializable
 
 /**
  * Enumeration representing [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646) definitions for all what3words supported languages
  */
-@Serializable
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(with = W3WLanguageSerializer::class)
 enum class W3WRFC5646Language(val code: String) : W3WLanguage {
     AF(code = "af") {
         override val w3wCode: String = code

@@ -1,5 +1,8 @@
 package com.what3words.core.types.language
 
+import com.what3words.core.types.language.internal.W3WLanguageSerializer
+import kotlinx.serialization.Serializable
+
 /**
  * Base type representing a language in the what3words domain.
  *
@@ -10,6 +13,7 @@ package com.what3words.core.types.language
  * Bosnian-Croatian-Montenegrin-Serbian is available using the language code "oo" with Cyrillic and Latin locales (oo_cy and oo_la). Refer to [supported locales](https://developer.what3words.com/public-api/docs#overview:~:text=that%20enables%20CORS.-,Locales,code%20oo%20with%20Cyrillic%20and%20Latin%20locales%20(oo_cy%20and%20oo_la).,-Supported%20locales%3A) for information on supported what3words locales.
  *
  * **/
+@Serializable(with = W3WLanguageSerializer::class)
 sealed interface W3WLanguage {
     val w3wCode: String
     val w3wLocale: String?
