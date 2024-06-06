@@ -3,6 +3,7 @@ package com.what3words.core.types.domain
 import com.what3words.core.types.geometry.W3WCoordinates
 import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WLanguage
+import com.what3words.core.types.language.internal.W3WLanguageSerializer
 import kotlinx.serialization.Serializable
 
 
@@ -21,6 +22,7 @@ class W3WAddress(
     val words: String,
     val center: W3WCoordinates?,
     val square: W3WRectangle?,
+    @Serializable(with = W3WLanguageSerializer::class)
     val language: W3WLanguage,
     val country: W3WCountry,
     val nearestPlace: String
