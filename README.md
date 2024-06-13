@@ -13,14 +13,15 @@ The `W3WTextDataSource` allows clients to interact with what3words core services
 
 ### W3WTextDataSource API Overview
 
-| Method Signature | Return Type | Description |
-|------------------|-------------|-------------|
-autosuggest(input: String,options: W3WAutosuggestOptions?) | `W3WResult<List<W3WSuggestion>>` | Get suggestions for a slightly incomplete what3words address.
-convertToCoordinates(words: String)  | `W3WResult<W3WAddress>`  | Convert a what3words address to latitude and longitude.  
-convertTo3wa(coordinates: W3WCoordinates, language: W3WLanguage)      | `W3WResult<W3WAddress>`   | Convert latitude and longitude to a what3words address.
-gridSection(boundingBox: W3WRectangle) | `W3WResult<W3WGridSection>` | Returns a section of the 3m x 3m what3words grid for a bounding box
-availableLanguages() | `W3WResult<Set<W3WProprietaryLanguage>>`  | Returns a set of all available languages that what3words supports. 
-version(version: Version) | `String?` | Returns the version string for a specified component from `W3WTextDataSource`.
+| Method Signature | Return Type                              | Description |
+|------------------|------------------------------------------|-------------|
+autosuggest(input: String,options: W3WAutosuggestOptions?) | `W3WResult<List<W3WSuggestion>>`         | Get suggestions for a slightly incomplete what3words address.
+convertToCoordinates(words: String)  | `W3WResult<W3WAddress>`                  | Convert a what3words address to latitude and longitude.  
+convertTo3wa(coordinates: W3WCoordinates, language: W3WLanguage)      | `W3WResult<W3WAddress>`                  | Convert latitude and longitude to a what3words address.
+gridSection(boundingBox: W3WRectangle) | `W3WResult<W3WGridSection>`              | Returns a section of the 3m x 3m what3words grid for a bounding box
+availableLanguages() | `W3WResult<Set<W3WProprietaryLanguage>>` | Returns a set of all available languages that what3words supports. 
+isValid3wa(worrds: String) | `W3WResult<Boolean>`                     | Checks if a what3words address is valid.
+version(version: Version) | `String?`                                | Returns the version string for a specified component from `W3WTextDataSource`.
 
 
 ### 2. W3WVoiceDataSource 
