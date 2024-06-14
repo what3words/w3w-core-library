@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "w3w-core-library"
-include(":shared")
+include(":lib")
