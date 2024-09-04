@@ -1,13 +1,14 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
-import java.net.*
+import java.net.URI
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("plugin.serialization")
     id("maven-publish")
     id("signing")
-    id("org.jetbrains.dokka")
+    alias(libs.plugins.jetbrains.dokka)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 group = "com.what3words"
@@ -23,7 +24,12 @@ version =
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
+    compilerOptions {
+        androidTarget {
+            compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
+        }
+    }
     jvm {
         mavenPublication {
             artifactId = "w3w-core-jvm"
@@ -34,11 +40,6 @@ kotlin {
             artifactId = "w3w-core-android"
         }
         publishLibraryVariants("release", "debug")
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
     }
     val xcFramework = XCFramework("W3WCore")
     listOf(
@@ -55,14 +56,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+                implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
     }
@@ -70,9 +71,9 @@ kotlin {
 
 android {
     namespace = "com.what3words.core"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 19
+        minSdk = libs.versions.minSdk.get().toInt()
     }
 }
 

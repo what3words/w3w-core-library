@@ -1,0 +1,24 @@
+[versions]
+compileSdk = "34"
+minSdk = "19"
+kotlin = "2.0.20"
+kotlinxSerializationJson = "1.6.3"
+kotlinxCoroutinesCore = "1.8.1"
+version-catalog-update = "0.8.4"
+agp = "8.5.0"
+dokka = "1.9.20"
+
+[libraries]
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+#TESTING
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesCore" }
+
+[plugins]
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
+jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
