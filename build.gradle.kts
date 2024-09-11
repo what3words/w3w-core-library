@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.version.catalog.update)
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlinSerialization) apply false
+    alias(libs.plugins.jetbrainsCompose) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
 
 tasks.register("clean", Delete::class) {

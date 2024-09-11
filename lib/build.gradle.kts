@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
 }
 
 group = "com.what3words"
@@ -58,6 +60,10 @@ kotlin {
             dependencies {
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
             }
         }
         val commonTest by getting {
@@ -81,6 +87,9 @@ val ossrhUsername = findProperty("OSSRH_USERNAME") as String?
 val ossrhPassword = findProperty("OSSRH_PASSWORD") as String?
 val signingKey = findProperty("SIGNING_KEY") as String?
 val signingKeyPwd = findProperty("SIGNING_KEY_PWD") as String?
+dependencies {
+    implementation(libs.ui.graphics.android)
+}
 
 
 afterEvaluate {

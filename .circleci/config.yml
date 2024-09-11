@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Snapshot Release Check
           command: |
-            echo -e "\nIS_SNAPSHOT_RELEASE=$( [[ "${CIRCLE_BRANCH}" =~ ^epic.* ]] && echo true || echo false )" >> gradle.properties
+            echo -e "\nIS_SNAPSHOT_RELEASE=$( [[ "${CIRCLE_BRANCH}" =~ ^task.* ]] && echo true || echo false )" >> gradle.properties
       - run:
           name: Inject Maven signing key
           command: |
@@ -55,5 +55,6 @@ workflows:
                 - main
                 - staging
                 - /^epic.*/
+                - /^task.*/
             tags:
               only: /^(v|d).*/
