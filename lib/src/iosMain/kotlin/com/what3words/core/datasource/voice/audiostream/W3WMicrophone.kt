@@ -33,7 +33,7 @@ import kotlin.math.PI
  * Manages configuration, opening, and closing of the audio stream, as well as processing of audio signals.
  */
 actual class W3WMicrophone(
-    override var config: W3WAudioStreamConfig = W3WMicrophone.defaultConfig()
+    actual override var config: W3WAudioStreamConfig = W3WMicrophone.defaultConfig()
 ) : W3WAudioStream() {
 
     /**
@@ -261,7 +261,7 @@ actual class W3WMicrophone(
      *
      * @param onAudioSignal Callback invoked when the [W3WAudioStream] receives new audio data.
      */
-    override fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit) {
+    actual override fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit) {
         configureAudioSession()
         startMicrophone(onAudioSignal)
     }
@@ -270,7 +270,7 @@ actual class W3WMicrophone(
      * Deactivates the [AVAudioSession], stops the [AVAudioEngine] and release system resources.
      */
     @OptIn(ExperimentalForeignApi::class)
-    override fun closeAudioInputStream() {
+    actual override fun closeAudioInputStream() {
         try {
             AVAudioSession.sharedInstance().setActive(active = false, error = null)
             audioEngine.stop()
@@ -301,7 +301,7 @@ actual class W3WMicrophone(
      * @param config The updated configuration.
      * @return The updated [W3WAudioStream].
      */
-    override fun updateConfig(config: W3WAudioStreamConfig): W3WAudioStream {
+    actual override fun updateConfig(config: W3WAudioStreamConfig): W3WAudioStream {
         this.config = config
         return this
     }
@@ -312,7 +312,7 @@ actual class W3WMicrophone(
      * @param listener The listener to set.
      * @return The [W3WAudioStream] instance with the events listener set.
      */
-    override fun setEventsListener(listener: EventsListener): W3WAudioStream {
+    actual override fun setEventsListener(listener: EventsListener): W3WAudioStream {
         this.eventsListener = listener
         return this
     }
