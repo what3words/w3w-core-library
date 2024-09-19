@@ -9,12 +9,6 @@ import com.what3words.core.types.options.W3WAutosuggestOptions
 
 interface W3WImageDataSource {
 
-    fun setLanguage(language: W3WLanguage)
-
-    fun getLanguages(): W3WLanguage
-
-    fun supportsLanguage(language: W3WLanguage): Boolean
-
     fun start(onReady: () -> Unit, onError: (W3WError) -> Unit)
 
     fun scan(
