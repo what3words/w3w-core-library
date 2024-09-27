@@ -3,7 +3,7 @@ package com.what3words.core.datasource.image
 import com.what3words.core.types.language.W3WLanguage
 
 /**
- * Interface to scan images and detect what3words addresses. This interface extends [W3WImageDataSource]
+ * Interface to scan images and detect possible what3words addresses. This interface extends [W3WImageDataSource]
  * and adds support for language setting and language support check.
  *
  * @see [W3WImageDataSource].

@@ -6,7 +6,7 @@ import com.what3words.core.types.image.W3WImage
 import com.what3words.core.types.options.W3WAutosuggestOptions
 
 /**
- * Interface to scan images and detect what3words addresses.
+ * Interface to scan images and detect possible what3words addresses.
  *
  * @see [W3WLanguageSupportImageDataSource].
  */
@@ -21,25 +21,20 @@ interface W3WImageDataSource {
     fun start(onReady: () -> Unit, onError: (W3WError) -> Unit)
 
     /**
-     * Scans the image to detect what3words addresses.
+     * Scans the image to detect possible what3words addresses.
      *
      * @param image The image to scan.
-     * @param options the [W3WAutosuggestOptions] to be applied when validating a possible what3words address,
-     * i.e: country clipping, check [W3WAutosuggestOptions] for possible filters/clippings.
      * @param onScanning the callback when it starts to scan image for text.
      * @param onDetected the callback when our [findPossible3wa] regex finds possible matches on the scanned text.
-     * @param onValidating the callback when we start validating the results of [findPossible3wa] against our API/SDK to check if valid (it will take into account [options] if provided).
-     * @param onResult Callback when the scan is completed with the detected what3words addresses.
      * @param onError Callback when an error occurs.
+     * @param onCompleted Callback when the scanning process is completed.
      **/
     fun scan(
         image: W3WImage,
-        options: W3WAutosuggestOptions?,
         onScanning: () -> Unit,
-        onDetected: () -> Unit,
-        onValidating: () -> Unit,
-        onResult: (List<W3WSuggestion>) -> Unit,
-        onError: (W3WError) -> Unit
+        onDetected: (List<String>) -> Unit,
+        onError: (W3WError) -> Unit,
+        onCompleted: () -> Unit
     )
 
     /**
