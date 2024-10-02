@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
  * Android implementation of the [W3WMicrophone] audio stream.
  * **/
 actual class W3WMicrophone(
-    override var config: W3WAudioStreamConfig = W3WMicrophone.defaultConfig()
+    actual override var config: W3WAudioStreamConfig = W3WMicrophone.defaultConfig()
 ) : W3WAudioStream() {
 
     // Represents the audio source for recording
@@ -42,7 +42,7 @@ actual class W3WMicrophone(
      * @param onAudioSignal Callback invoked when the [W3WAudioStream] receives new audio data.
      */
     @SuppressLint("MissingPermission")
-    override fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit) {
+    actual override fun openAudioInputStream(onAudioSignal: (readCount: Int, buffer: ShortArray) -> Unit) {
         if (!isSampleRateValid(config.sampleRateInHz)) {
             CoroutineScope(Dispatchers.Main).launch {
                 eventsListener?.onError(
@@ -107,7 +107,7 @@ actual class W3WMicrophone(
     /**
      * Deactivates the audio session and release system resources.
      */
-    override fun closeAudioInputStream() {
+    actual override fun closeAudioInputStream() {
         isListening = false
         CoroutineScope(Dispatchers.Main).launch {
             eventsListener?.onAudioStreamStateChange(
@@ -123,7 +123,7 @@ actual class W3WMicrophone(
      * @param config The updated configuration.
      * @return The updated [W3WAudioStream].
      */
-    override fun updateConfig(config: W3WAudioStreamConfig): W3WAudioStream {
+    actual override fun updateConfig(config: W3WAudioStreamConfig): W3WAudioStream {
         this.config = config
         return this
     }
@@ -134,7 +134,7 @@ actual class W3WMicrophone(
      * @param listener The listener to set.
      * @return The [W3WAudioStream] instance with the events listener set.
      */
-    override fun setEventsListener(listener: EventsListener): W3WAudioStream {
+    actual override fun setEventsListener(listener: EventsListener): W3WAudioStream {
         this.eventsListener = listener
         return this
     }
