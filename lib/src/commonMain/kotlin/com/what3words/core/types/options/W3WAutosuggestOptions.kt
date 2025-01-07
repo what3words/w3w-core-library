@@ -8,6 +8,7 @@ import com.what3words.core.types.geometry.W3WRectangle
 import com.what3words.core.types.language.W3WLanguage
 import com.what3words.core.types.language.W3WRFC5646Language
 import com.what3words.core.types.language.W3WProprietaryLanguage
+import kotlinx.serialization.Serializable
 
 /**
  * Represents options for fine-tuning autosuggestions request in what3words.
@@ -24,6 +25,7 @@ import com.what3words.core.types.language.W3WProprietaryLanguage
  * @property preferLand Whether to return only results on land. Defaults to false.
  * @property includeCoordinates Whether each address suggestion returned as part of an autosuggestion request will include coordinates. Defaults to false
  */
+@Serializable
 class W3WAutosuggestOptions private constructor(
     val focus: W3WCoordinates?,
     val language: W3WLanguage?,
