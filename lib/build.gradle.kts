@@ -62,8 +62,6 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
-                implementation(compose.ui)
             }
         }
         val commonTest by getting {
