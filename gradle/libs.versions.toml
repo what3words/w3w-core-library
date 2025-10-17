@@ -2,7 +2,7 @@
 compileSdk = "34"
 minSdk = "21"
 groupId = "com.what3words"
-artifactId = "core-library-multiplatform"
+artifactId = "w3w-core-library-multiplatform"
 kotlin = "2.0.20"
 kotlinxSerializationJson = "1.6.3"
 kotlinxCoroutinesCore = "1.8.1"

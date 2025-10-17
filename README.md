@@ -5,7 +5,7 @@ The what3words core library is a Kotlin multiplatform library that provides API 
 > **Note:**  
 > Starting from version **1.3.0**, this library has been **migrated to Kotlin Multiplatform (KMP)**.  
 > The previous Android-only artifact (`com.what3words:w3w-core-android`) has been replaced by  
-> `com.what3words:core-library-multiplatform`.  
+> `com.what3words:w3w-core-library-multiplatform`.  
 > Future updates and improvements will be released under the new multiplatform artifact.
 
 ## DataSources 
