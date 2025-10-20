@@ -1,6 +1,8 @@
 [versions]
 compileSdk = "34"
 minSdk = "21"
+groupId = "com.what3words"
+artifactId = "w3w-core-library-multiplatform"
 kotlin = "2.0.20"
 kotlinxSerializationJson = "1.6.3"
 kotlinxCoroutinesCore = "1.8.1"
@@ -9,6 +11,7 @@ agp = "8.5.0"
 dokka = "1.9.20"
 uiGraphicsAndroid = "1.7.0"
 compose-plugin = "1.6.11"
+mavenPublish = "0.34.0"
 
 [libraries]
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
@@ -27,3 +30,4 @@ version-catalog-update = { id = "nl.littlerobots.version-catalog-update", versio
 jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
