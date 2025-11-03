@@ -2,6 +2,12 @@
 
 The what3words core library is a Kotlin multiplatform library that provides API definitions for what3words [data sources](https://github.com/what3words/w3w-core-library/tree/task/MT-6794-Create-README-file-for-Core-Library?tab=readme-ov-file#datasources) and [types](https://github.com/what3words/w3w-core-library/tree/task/MT-6794-Create-README-file-for-Core-Library?tab=readme-ov-file#data-types). It is used across all what3words Android libraries and SDKs.
 
+> **Note:**  
+> Starting from version **1.3.0**, this library has been **migrated to Kotlin Multiplatform (KMP)**.  
+> The previous Android-only artifact (`com.what3words:w3w-core-android`) has been replaced by  
+> `com.what3words:w3w-core-library-multiplatform`.  
+> Future updates and improvements will be released under the new multiplatform artifact.
+
 ## DataSources 
 A data source provides an API for clients to interact with one or more what3words services using various input and output formats. The what3words core library includes API definitions for the following data sources:
 
