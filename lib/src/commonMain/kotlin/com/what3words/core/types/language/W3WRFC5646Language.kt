@@ -122,8 +122,8 @@ enum class W3WRFC5646Language(val code: String) : W3WLanguage {
         override val w3wLocale: String? = null
     },
     HR(code = "hr") {
-        override val w3wCode: String = code
-        override val w3wLocale: String? = null
+        override val w3wCode: String = "oo"
+        override val w3wLocale: String? = "oo_la"
     },
     HU(code = "hu") {
         override val w3wCode: String = code
