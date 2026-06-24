@@ -1,27 +1,33 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("maven-publish")
     id("signing")
-    alias(libs.plugins.jetbrains.dokka)
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.kotlinSerialization)
-    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.multiplatform.library)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.vanniktech.mavenPublish)
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
 kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
     jvm()
-    androidTarget {
-        publishLibraryVariants("release")
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+
+    android {
+        namespace = "com.what3words.core"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.fromTarget(libs.versions.jvmToolchain.get()))
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -31,8 +37,8 @@ kotlin {
             dependencies {
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)
-                implementation(compose.runtime)
-                implementation(compose.foundation)
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.foundation)
             }
         }
         val commonTest by getting {
@@ -44,24 +50,10 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.what3words.core"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-}
-
 mavenPublishing {
     publishToMavenCentral()
 
     signAllPublications()
-
-    coordinates(libs.versions.groupId.get(), libs.versions.artifactId.get())
 
     pom {
         name = "what3words core library"
