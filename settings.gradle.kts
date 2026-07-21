@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from("com.what3words:android-version-catalog:2026.06.01-SNAPSHOT")
+            from("com.what3words:android-version-catalog:2026.06.01")
 
             // Project-specific override: this library still supports API 21,
             // which is lower than the catalog default.
